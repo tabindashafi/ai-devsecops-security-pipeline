@@ -30,7 +30,7 @@ jobs:
 
       - name: Gate 2 - Safety Dependency Scan
         run: |
-          safety scan --target requirements.txt
+          safety scan --target .
 
       - name: Gate 3 - Gitleaks Secret Detection
         uses: gitleaks/gitleaks-action@v2
