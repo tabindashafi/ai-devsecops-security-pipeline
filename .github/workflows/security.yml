@@ -17,17 +17,16 @@ jobs:
       - run: pip install bandit
       - run: bandit -r . -ll --exclude ./venv
 
-  safety:
-    name: Gate 2 - Safety Dependency Scan
+    dependency-scan:
+    name: Gate 2 - Dependency Vulnerability Scan
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - run: pip install safety
-      - run: safety scan --target .
-
+      - run: pip install pip-audit
+      - run: pip-audit -r requirements.txt
   gitleaks:
     name: Gate 3 - Gitleaks Secret Detection
     runs-on: ubuntu-latest
