@@ -23,9 +23,11 @@ def scan_repository():
         dirs[:] = [d for d in dirs if d != "venv" and d != ".git" and d != "__pycache__"]
 
         for filename in files:
-            if not filename.endswith(".py"):
+            if filename == "inject_scanner.py":
                 continue
 
+            if not filename.endswith(".py"):
+                continue
             path = os.path.join(root, filename)
 
             try:
