@@ -1,6 +1,11 @@
 
 from flask import Flask, request, jsonify
+import os
 import requests
+SYSTEM_PROMPT = "You are a helpful AI chatbot."
+system_message = SYSTEM_PROMPT
+def unsafe_test():
+    return eval("1 + 1")
 
 from validate import validate_input, detect_injection, scan_output
 
